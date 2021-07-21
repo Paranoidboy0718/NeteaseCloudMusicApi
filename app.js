@@ -97,6 +97,10 @@ fs.readdirSync(path.join(__dirname, 'module'))
 
       question(query, request)
         .then((answer) => {
+          if (typeof answer === 'string') {
+            res.redirect(answer)
+            return
+          }
           console.log('[OK]', decode(req.originalUrl))
 
           const cookies = answer.cookie
